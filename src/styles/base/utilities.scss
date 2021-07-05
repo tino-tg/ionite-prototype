@@ -1,0 +1,27 @@
+@import "./variables";
+@import "./mixins";
+
+.clickable {
+	@include unselectable();
+	cursor: pointer;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.text-bold {
+	font-weight: bolder;
+}
+
+.text-large {
+	font-size: $ionite-font-size-large;
+}
+
+.text-title {
+  font-size: $ionite-font-size-title;
+}
+
+.text-small {
+	font-size: $ionite-font-size-caption;
+}

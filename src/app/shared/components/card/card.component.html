@@ -1,0 +1,22 @@
+<mat-card class="ionite-card">
+  <mat-card-header
+    *ngIf="cardTitle"
+    class="ionite-card__header"
+  >
+    <mat-card-title class="mb-0">
+      {{cardTitle}}
+    </mat-card-title>
+  </mat-card-header>
+  <img
+    *ngIf="cardImageUrl"
+    mat-card-image
+    [src]="cardImageUrl"
+    alt=""
+  >
+  <mat-card-content class="ionite-card__content mb-0">
+    <ng-content select="[cardContent]"></ng-content>
+  </mat-card-content>
+  <mat-card-footer class="wrapper ionite-card__actions mt-3">
+    <ng-content select="[cardFooter]"></ng-content>
+  </mat-card-footer>
+</mat-card>

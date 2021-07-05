@@ -1,0 +1,96 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+@import "~src/styles/base/mixins";
+
+@mixin ionite-styles-reset-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
+	$foreground: map-get($theme, foreground);
+
+  color: mat.get-color-from-palette($foreground, text);
+  fill: mat.get-color-from-palette($foreground, text);
+
+	a {
+		transition: all $ionite-transition-default ease-out;
+		color: mat.get-color-from-palette($foreground, text);
+
+		&:hover {
+			color: mat.get-color-from-palette($foreground, text);
+		}
+
+		&.text-link {
+			@include hover-and-active() {
+				color: mat.get-color-from-palette($accent);
+			}
+		}
+	}
+
+	.text-color-accent {
+		color: mat.get-color-from-palette($accent);
+	}
+
+	.text-color-secondary {
+		color: mat.get-color-from-palette($foreground, secondary-text);
+	}
+
+	.text-color-warn {
+		color: mat.get-color-from-palette($warn);
+	}
+
+	// darker version of the dialog backdrop
+	.dark-backdrop {
+		background: rgba(0,0,0,.66);
+	}
+
+	// fine-tuning for overlay element positions
+	// e.g. dialog, snackbar, ...
+	.cdk-global-overlay-wrapper {
+		padding-bottom: $ionite-toolbar-height-mobile;
+
+		@media (min-width: map-get($grid-breakpoints, md)) {
+			padding-bottom: 0;
+			padding-top: $ionite-toolbar-height-default;
+			padding-left: $ionite-sidebar-width-default;
+		}
+	}
+
+	// reduce height of outline form fields
+	mat-form-field.mat-form-field.mat-form-field-appearance-outline {
+
+		> div.mat-form-field-wrapper {
+
+			> div.mat-form-field-flex {
+
+				> div.mat-form-field-infix {
+					padding: 0.4em 0;
+
+					> span.mat-form-field-label-wrapper {
+						top: -1.5em;
+					}
+				}
+			}
+		}
+
+		&.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+			transform: translateY(-1em) scale(.75);
+			width: 133.33333%;
+		}
+
+		.mat-form-field-prefix,
+		.mat-form-field-suffix {
+			padding-left: $ionite-icon-spacing-l;
+			top: 0;
+		}
+	}
+
+	// reduce margin for form field errors
+	.mat-form-field-subscript-wrapper {
+		margin-top: 0.3333333333em;
+	}
+
+	// reduce mobile
+	.mat-tab-label {
+		padding: 0 map-get($ionite-spacers, 3);
+	}
+}

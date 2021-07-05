@@ -1,0 +1,7 @@
+export * from './reducers/settings.reducer'
+export * from './selectors/settings.selectors'
+export * from './actions/settings.actions'
+export * from './effects/settings.effects'
+export * from './services/settings.facade.service'
+export * from './types/setting'
+export * from './settings.module'

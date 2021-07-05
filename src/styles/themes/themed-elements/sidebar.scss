@@ -1,0 +1,172 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+@mixin ionite-sidebar-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$foreground: map-get($theme, foreground);
+	$divider: map-get($foreground, divider);
+
+	mat-sidenav-container {
+		height: 100%;
+
+		.sidebar {
+			background-color: mat.get-color-from-palette($primary);
+			padding-bottom: $ionite-sidebar-toggle-size;
+			border-bottom-right-radius: 2%;
+			border-right-width: 0;
+
+			.sidebar-brand {
+				font-family: $ionite-font-family-outstanding;
+				transition: all $ionite-sidebar-animation-duration ease-out;
+				padding: $ionite-spacer $ionite-toolbar-horizontal-spacing-default;
+				border-bottom: 1px solid $divider;
+				display: flex;
+				align-items: center;
+				width: $ionite-sidebar-width-default;
+				overflow: hidden;
+
+				&__logo {
+					color: $ionite-color-brand-logo;
+					font-size: $ionite-brand-logo-size-default;
+				}
+
+				&__title {
+					display: inline-block;
+					font-size: $ionite-brand-title-size-default;
+					color: $ionite-color-brand-title;
+					overflow: hidden;
+				}
+
+				&__beta {
+					margin-left: map-get($ionite-spacers, 1);
+					color: $ionite-color-brand-beta;
+					overflow: hidden;
+				}
+
+				&--collapsed {
+					width: $ionite-sidebar-width-collapsed;
+					font-size: 0;
+					justify-content: center;
+					padding: $ionite-spacer 0;
+
+					.sidebar-brand__title {
+						display: none;
+					}
+
+					.sidebar-brand__beta {
+						display: none;
+					}
+				}
+			}
+
+			.mat-list-item {
+				transition: all $ionite-sidebar-animation-duration ease-out;
+				font-family: $ionite-font-family-outstanding;
+				position: relative;
+				color: $ionite-color-white;
+				background-color: mat.get-color-from-palette($primary);
+				width: $ionite-sidebar-width-default;
+				overflow: hidden;
+
+				&:before {
+					transition: all 225ms ease-out;
+					content: "";
+					position: absolute;
+					bottom: 0;
+					top: -2px;
+					left: 0;
+					width: 48px;
+					border: map-get($ionite-spacers, 2) solid transparent;
+					border-radius: $ionite-border-radius-outstanding;
+				}
+
+				.mat-list-item-content {
+					transition: all $ionite-sidebar-animation-duration ease-out;
+					padding: 0 map-get($ionite-spacers, 3);
+					margin-left: 3px;
+					background-color: mat.get-color-from-palette($primary);
+
+					.mat-list-icon {
+						transition: all $ionite-sidebar-animation-duration ease-out;
+						transform: rotate(-2deg);
+						padding: 0;
+					}
+
+					.mat-list-text {
+						transition: all $ionite-sidebar-animation-duration ease-out;
+						padding-left: map-get($ionite-spacers, 3);
+					}
+				}
+
+				&:hover {
+					background-color: map-get($primary, darker);
+
+					&:before {
+						border-color: map-get($primary, darker);
+					}
+
+					.mat-list-item-content {
+						background-color: map-get($primary, darker);
+
+						.mat-list-icon {
+							transform: scale(1.1) rotate(4deg);
+						}
+
+						.mat-list-text {
+							padding-left: map-get($ionite-spacers, 3) + $ionite-icon-spacing-default;
+						}
+					}
+				}
+
+				&.active {
+					background-color: map-get($primary, darker);
+
+					&:before {
+						border-color: mat.get-color-from-palette($accent);
+					}
+
+					.mat-list-item-content {
+						background-color: map-get($primary, darker);
+
+						.mat-list-icon {
+							transform: scale(1.1) rotate(4deg);
+						}
+
+						.mat-list-text {
+							padding-left: map-get($ionite-spacers, 3) + $ionite-icon-spacing-default;
+						}
+					}
+
+					&:active,
+					&:focus {
+						background-color: map-get($primary, darker);
+
+						.mat-list-item-content {
+							background-color: map-get($primary, darker);
+						}
+					}
+				}
+
+				&--collapsed {
+					width: $ionite-sidebar-width-collapsed;
+
+					.mat-list-item-content {
+						margin-left: 2px;
+
+						.mat-list-text {
+							display: none;
+						}
+					}
+				}
+			}
+
+			.sidebar-toggle {
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				font-size: 0;
+			}
+		}
+	}
+}

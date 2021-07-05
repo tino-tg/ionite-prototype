@@ -1,0 +1,198 @@
+@use '~@angular/material' as mat;
+
+// minor overrides
+// ---------------
+$link-hover-decoration: none;
+$label-margin-bottom: 0;
+
+
+// fonts
+// fallback font families are configured in material base theming
+// --------------------------------------------------------------
+$ionite-font-family-base: 'Lato';
+$ionite-font-family-outstanding: 'Lato';
+
+$ionite-font-size-base: 16px;
+
+$ionite-font-size-large: 18px;
+$ionite-line-height-base: 1.5;
+
+$ionite-font-size-headline: 24px;
+$ionite-line-height-headline: 36px;
+$ionite-font-size-title: 20px;
+$ionite-line-height-title: 32px;
+$ionite-font-size-subheading-2: 16px;
+$ionite-line-height-subheading-2: 28px;
+$ionite-font-size-subheading-1: 15px;
+$ionite-line-height-subheading-1: 24px;
+
+$ionite-font-size-caption: 14px;
+$ionite-line-height-caption: 20px;
+$ionite-font-size-button: 16px;
+
+
+// sizes & spacings
+// configure spacers to do 4px steps for easily rememberable class names (e.g. class `mb-2` for 8px bottom margin)
+// also used as bootsrap variables overrides
+// all spacing related bootstrap utility classes are built on this
+// -----------------------------------------
+
+$ionite-spacer: 16px;
+$spacer: $ionite-spacer;
+
+$ionite-spacers: (
+  0:  0,
+  1:  $ionite-spacer * .25,    // 4px
+  2:  $ionite-spacer * .5,     // 8px
+  3:  $ionite-spacer * .75,    // 12px
+  4:  $ionite-spacer,          // 16px
+  5:  $ionite-spacer * 1.25,   // 20px
+  6:  $ionite-spacer * 1.5,    // 24px
+  7:  $ionite-spacer * 1.75,   // 28px
+  8:  $ionite-spacer * 2,      // 32px
+  9:  $ionite-spacer * 2.25,   // 36px
+  10: $ionite-spacer * 2.5,    // 40px
+  11: $ionite-spacer * 2.75,   // 44px
+  12: $ionite-spacer * 3,      // 48px
+);
+
+$spacers: $ionite-spacers;
+
+// bootstrap grid
+// --------------
+
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+);
+
+
+// app brand
+// ----------
+$ionite-brand-logo-size-default: 40px;
+$ionite-brand-logo-size-handset: 32px;
+$ionite-brand-logo-spacing-handset: 2px;
+$ionite-brand-title-size-default: 20px;
+$ionite-brand-title-size-handset: 16px;
+
+
+// app colors
+// ----------
+
+// green
+$ionite-color-green-default: #0F596E;
+$ionite-color-green-light: #48869C;
+$ionite-color-green-dark: #003043;
+
+// orange
+$ionite-color-orange-default: #EB6012;
+$ionite-color-orange-light: #FF9145;
+$ionite-color-orange-dark: #B12F00;
+
+// white
+$ionite-color-white: #FFFFFF;
+
+// black
+$ionite-color-black: #333333;
+
+// grey
+$ionite-color-grey1: #9E9E9E;
+
+$ionite-dark-primary-text: rgba(black, 0.87);
+$ionite-dark-secondary-text: rgba(black, 0.54);
+$ionite-dark-disabled-text: rgba(black, 0.38);
+$ionite-dark-dividers: rgba(black, 0.12);
+$ionite-dark-focused: rgba(black, 0.12);
+$ionite-light-primary-text: white;
+$ionite-light-secondary-text: rgba(white, 0.7);
+$ionite-light-disabled-text: rgba(white, 0.5);
+$ionite-light-dividers: rgba(white, 0.12);
+$ionite-light-focused: rgba(white, 0.12);
+
+// material color map
+$ionite-primary-color-map: (
+  100: $ionite-color-green-light,
+  200: $ionite-color-green-default,
+  300: $ionite-color-green-dark,
+  contrast: (
+    100: $ionite-light-secondary-text,
+    200: $ionite-light-primary-text,
+    300: $ionite-light-primary-text,
+  )
+);
+
+$ionite-accent-color-map: (
+  100: $ionite-color-orange-light,
+  200: $ionite-color-orange-default,
+  300: $ionite-color-orange-dark,
+  contrast: (
+    100: $ionite-light-primary-text,
+    200: $ionite-light-primary-text,
+    300: $ionite-light-primary-text,
+  )
+);
+
+// brand colors
+$ionite-color-brand-logo: $ionite-color-orange-default;
+$ionite-color-brand-title: $ionite-color-orange-default;
+$ionite-color-brand-beta: $ionite-color-white;
+
+// text link colors
+$ionite-color-text-link: $ionite-color-green-dark;
+$ionite-background-text-link: transparent;
+
+$success-colors: mat.define-palette(mat.$green-palette, 400);
+$warning-colors: mat.define-palette(mat.$amber-palette, 400);
+
+
+// layout and ui elements
+// ---------------
+
+// images
+$ionite-image-width-default: 600px;
+$ionite-image-height-default: 400px;
+
+// icons
+$ionite-icon-size-default: 24px;
+$ionite-icon-space-default: 48px;
+$ionite-icon-spacing-default: 2px;
+$ionite-icon-spacing-l: 4px;
+
+// mikado
+$ionite-mikado-size-default: $ionite-icon-space-default;
+
+// button
+$ionite-button-size-default: 36px;
+
+// toolbar
+$toolbar-breakpoint: map-get($grid-breakpoints, md);
+$ionite-toolbar-z-index: 999;
+$ionite-toolbar-height-default: 60px;
+$ionite-toolbar-height-mobile: $ionite-icon-space-default;
+$ionite-toolbar-font-size-default: $ionite-font-size-large;
+$ionite-toolbar-font-size-mobile: $ionite-font-size-base;
+$ionite-toolbar-horizontal-spacing-default: round($ionite-spacer / 3);
+
+// navigation sidebar
+$ionite-sidebar-width-default: 260px;
+$ionite-sidebar-width-collapsed: map-get($ionite-spacers, 12);
+$ionite-sidebar-animation-duration: 225ms;
+$ionite-sidebar-toggle-size: $ionite-icon-space-default;
+
+
+// transition
+// ----------
+$ionite-transition-default: 250ms;
+$ionite-transition-fast: 200ms;
+$ionite-transition-slow: 300ms;
+
+
+// border radius
+// -------------
+$ionite-border-radius-default: 4px;
+$ionite-border-radius-outstanding: 100% 10% 100% 10% / 10% 100% 10% 100%;
+$ionite-border-radius-outstanding-hover: 10% 100% 10% 100% / 100% 10% 100% 10%;

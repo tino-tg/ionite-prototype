@@ -1,0 +1,110 @@
+<div class="ionite-theme-wrapper {{ theme$ | async }}-theme">
+  <mat-sidenav-container
+    class="sidenav-container"
+  >
+    <mat-sidenav
+      #drawer
+      class="sidenav"
+      [ngClass]="{'sidenav--collapsed': sideNavCollapsed}"
+      style="background-image: url('assets/sidebar_bg.jpg');"
+      fixedInViewport
+      [attr.role]="(isMobile$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isMobile$ | async) ? 'over' : 'side'"
+      [opened]="(isMobile$ | async) === false"
+    >
+      <div class="sidenav__logo">
+        <img
+          class="sidenav__logo__image"
+          alt="Logo"
+          src="assets/logoColorSmall.png"
+        />
+        <span class="sidenav__logo__title text-truncate">{{ title }}</span>
+      </div>
+      <mat-divider></mat-divider>
+      <div class="sidenav__list">
+        <a
+          *ngFor="let item of navigationItems"
+          routerLink="{{ item.path }}"
+          [routerLinkActive]="'sidenav__list__item--active'"
+          class="sidenav__list__item"
+          [ngClass]="{'sidenav__list__item--collapsed': sideNavCollapsed}"
+          [matTooltip]="item.label"
+          matTooltipPosition="after"
+          [matTooltipDisabled]="!sideNavCollapsed"
+        >
+          <mat-icon>{{ item.icon }}</mat-icon>
+          {{ item.label }}
+        </a>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content [ngClass]="{'sidenav-content': (isMobile$ | async) === false, 'sidenav-content--collapsed': sideNavCollapsed}">
+      <mat-toolbar>
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()"
+          *ngIf="(isMobile$ | async) else navCollapseToggle"
+        >
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+        <ng-template #navCollapseToggle>
+          <button
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            class="collapse-toggle"
+            [ngClass]="{'collapse-toggle--collapsed': sideNavCollapsed}"
+            (click)="onNavigationCollapseToggle()"
+            [matTooltip]="sideNavCollapsed ? 'Expand navigation' : 'Collapse navigation'"
+            matTooltipPosition="after"
+          >
+            <mat-icon aria-label="Side nav toggle icon">menu_open</mat-icon>
+          </button>
+        </ng-template>
+        <span class="spacer"></span>
+        <button
+          mat-icon-button
+          aria-label="Show settings menu"
+          [matMenuTriggerFor]="settingsMenu"
+        >
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #settingsMenu="matMenu">
+          <button
+            mat-menu-item
+            (click)="onThemeToggle()"
+          >
+            <mat-icon *ngIf="isDarkTheme else lightThemeIcon">nightlight_round</mat-icon>
+            <ng-template #lightThemeIcon>
+              <mat-icon>light_mode</mat-icon>
+            </ng-template>
+            <span>Appearance</span>:
+            <span *ngIf="isDarkTheme else lightThemeText">Dark</span>
+            <ng-template #lightThemeText>
+              <span>Light</span>
+            </ng-template>
+          </button>
+          <button mat-menu-item disabled>
+            <mat-icon>translate</mat-icon>
+            <span>Language</span>:
+            <span>English</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Account data</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Log out</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

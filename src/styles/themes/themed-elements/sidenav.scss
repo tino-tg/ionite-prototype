@@ -1,0 +1,142 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+@mixin ionite-sidenav-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  $divider: map-get($foreground, divider);
+
+  mat-sidenav-container {
+    height: 100%;
+
+    .sidenav {
+      padding-bottom: $ionite-sidebar-toggle-size;
+      border-right-width: 0;
+      width: $ionite-sidebar-width-default;
+      background-size: cover;
+      box-shadow: 0 16px 38px -12px rgb(0 0 0 / 56%), 0 4px 25px 0 rgb(0 0 0 / 12%), 0 8px 10px -5px rgb(0 0 0 / 20%);
+      display: flex;
+      flex-direction: column;
+      transition: width $ionite-sidebar-animation-duration ease-out;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(mat.get-color-from-palette($background, background), 0.9);
+        z-index: 1;
+      }
+
+      .mat-drawer-inner-container {
+        flex-grow: 1;
+
+        display: flex !important;
+        flex-direction: column;
+
+        /* for Firefox */
+        min-height: 0;
+        z-index: 2;
+      }
+
+      &__logo {
+        padding: map-get($ionite-spacers, 3);
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        //background: mat.get-color-from-palette($background, background);
+        overflow: hidden;
+        background-color: #FFF;
+
+        &__image {
+          width: $ionite-sidebar-width-collapsed;
+        }
+
+        &__title {
+          padding-left: map-get($ionite-spacers, 3);
+        }
+      }
+
+      &__list {
+        flex-grow: 1;
+
+        overflow: auto;
+        display: flex;
+        flex-direction: column;
+        padding: map-get($ionite-spacers, 3);
+
+        /* for Firefox */
+        min-height: 0;
+        scrollbar-width: none;
+
+        /* for webkit browsers */
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        &__item {
+          height: $ionite-sidebar-width-collapsed;
+          margin-bottom: map-get($ionite-spacers, 3);
+          transition: all $ionite-transition-fast ease-in-out;
+          display: flex;
+          flex-shrink: 0;
+          align-items: center;
+          text-decoration: none;
+          background: transparent;
+          border-radius: $ionite-border-radius-default;
+          overflow: hidden;
+          transform: translate3d(0, 0, 0);
+
+          mat-icon {
+            transition: all $ionite-transition-fast ease-out;
+            margin: map-get($ionite-spacers, 3);
+            color: mat.get-color-from-palette($foreground, icon);
+          }
+
+          &--active {
+            color: $ionite-color-white;
+            background-color: mat.get-color-from-palette($accent) !important;
+            box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgba(mat.get-color-from-palette($accent), 0.6);
+
+            * {
+              color: $ionite-color-white!important;
+            }
+          }
+
+          &--collapsed {
+            width: $ionite-sidebar-width-collapsed;
+          }
+
+          &:not([class*="--active"]) {
+            &:hover {
+              background-color: rgba(mat.get-color-from-palette($foreground, text), 0.1);
+
+              mat-icon {
+                transform: scale(1.1);
+              }
+            }
+          }
+        }
+      }
+
+      &--collapsed {
+        width: $ionite-sidebar-width-collapsed + (2 * map-get($ionite-spacers, 3));
+      }
+    }
+
+    .sidenav-content {
+      transition: all $ionite-sidebar-animation-duration ease-out;
+      margin-left: $ionite-sidebar-width-default !important;
+
+      &--collapsed {
+        margin-left: $ionite-sidebar-width-collapsed + (2 * map-get($ionite-spacers, 3)) !important;
+      }
+    }
+  }
+}

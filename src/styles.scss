@@ -1,0 +1,65 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+
+// Custom styles
+@import '~src/styles/package';
+
+// Bootstrap basics
+@import "~bootstrap/scss/bootstrap-grid";
+@import "~bootstrap/scss/bootstrap-utilities";
+
+// Define a custom typography config that overrides the font-family as well as the
+// `headlines` and `body-1` levels.
+$ionite-typography: mat.define-typography-config(
+  $font-family: 	$ionite-font-family-base,
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core($ionite-typography);
+
+// Define the palettes for your various themes using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+@import '~src/styles/themes/default.theme';
+@import '~src/styles/themes/dark.theme';
+
+// Theme resets
+@import '~src/styles/themes/theme.reset';
+
+// Custom theme mixin for custom theme based elements
+@import "~src/styles/themes/themed-elements/package";
+
+@mixin custom-components-theme($theme) {
+  @include ionite-styles-reset-theme($theme);
+  @include ionite-toolbar-theme($theme);
+  @include ionite-sidebar-theme($theme);
+  @include ionite-sidenav-theme($theme);
+  @include ionite-mikado-theme($theme);
+  @include ionite-button-theme($theme);
+  @include ionite-card-theme($theme);
+  @include ionite-notifications-theme($theme);
+  @include ionite-mask-theme($theme);
+  @include ionite-collect-dialog-theme($theme);
+  @include ionite-ghost-list-item-theme($theme);
+  @include ionite-divider-heading-theme($theme);
+  @include ionite-svg-fill-theme($theme);
+}
+
+// Include the various themes styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+.default-theme {
+  @include mat.all-component-themes($ionite-theme);
+  @include custom-components-theme($ionite-theme);
+}
+
+.dark-theme {
+  @include mat.all-component-themes($ionite-dark-theme);
+  @include custom-components-theme($ionite-dark-theme);
+}
+
+// Include code highlighting css
+@import '~highlight.js/styles/stackoverflow-dark.css';

@@ -1,0 +1,14 @@
+@import "~src/styles/base/variables";
+
+.ionite-theme-wrapper {
+  height: 100%;
+  width: 100%;
+}
+
+.collapse-toggle {
+  transition: transform $ionite-sidebar-animation-duration ease-out;
+
+  &--collapsed {
+    transform: rotate(-180deg);
+  }
+}

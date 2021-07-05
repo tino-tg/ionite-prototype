@@ -1,0 +1,20 @@
+<pre>
+  <code
+    [highlight]="codeText"
+    [languages]="['html', 'ts', 'scss']"
+  ></code>
+  <button
+    mat-stroked-button
+    color="accent"
+    (click)="onCopyCodeClick()"
+  >
+    <mat-icon
+      *ngIf="copied else notCopied"
+      [@copyIconAnimation]
+    >check_circle_outline</mat-icon>
+    <ng-template #notCopied>
+      <mat-icon [@copyIconAnimation]>content_copy</mat-icon>
+    </ng-template>
+    <span class="ms-1">Copy code</span>
+  </button>
+</pre>

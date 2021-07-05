@@ -1,0 +1,8 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+$ionite-primary: mat.define-palette($ionite-primary-color-map, 200, 100, 300);
+$ionite-accent: mat.define-palette($ionite-accent-color-map, 200, 100, 300);
+$ionite-warn: mat.define-palette(mat.$deep-orange-palette, 600);
+
+$ionite-theme: mat.define-light-theme($ionite-primary, $ionite-accent, $ionite-warn);

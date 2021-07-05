@@ -1,0 +1,21 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+@import "~src/styles/base/mixins";
+
+@mixin ionite-card-theme($theme) {
+	$accent: map-get($theme, accent);
+
+	.ionite-card {
+    margin-top: 14px;
+
+    &__header {
+      margin-top: -30px!important;
+      margin-bottom: 15px;
+      border-radius: 3px;
+      padding: 15px;
+      background: linear-gradient(60deg, mat.get-color-from-palette($accent), rgba(mat.get-color-from-palette($accent), 0.9));
+      box-shadow: 0 4px 20px 0 rgb(0 0 0 / 14%), 0 7px 10px -5px rgba(mat.get-color-from-palette($accent), 0.6);
+      color: $ionite-color-white;
+    }
+	}
+}

@@ -1,0 +1,25 @@
+// --------------------------------- //
+// theming for ionite ghost list item    //
+// check component for documentation //
+// --------------------------------- //
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+@mixin ionite-ghost-list-item-theme($theme) {
+	$foreground: map-get($theme, foreground);
+	$background: map-get($theme, background);
+	$ghost-list-color-card: mat.get-color-from-palette($background, card);
+	$ghost-list-color-divider: map-get($foreground, divider);
+
+	.ghost-list-item {
+		background-color: $ghost-list-color-card;
+
+		&__icon {
+			color: $ghost-list-color-divider;
+		}
+
+		&__title {
+			background-color: $ghost-list-color-divider;
+		}
+	}
+}

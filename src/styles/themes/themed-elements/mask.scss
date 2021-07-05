@@ -1,0 +1,76 @@
+// --------------------------------- //
+// theming for ionite mask elements      //
+// check component for documentation //
+// --------------------------------- //
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+@import "~src/styles/base/mixins";
+
+@mixin ionite-mask-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$background: map-get($theme, background);
+	$mask-color-default: mat.get-color-from-palette($background, background);
+	$mask-color-primary: mat.get-color-from-palette($primary);
+	$mask-color-card: mat.get-color-from-palette($background, card);
+	$mask-color-accent: mat.get-color-from-palette($accent);
+	$mask-color-contrast: mat.get-color-from-palette($primary, default-contrast);
+
+	.mask {
+		.mask {
+			@include icon-color($mask-color-default) {
+				--var__border-color: #{$mask-color-accent};
+			}
+		}
+
+		// coloring
+		// --------
+		&--primary {
+			.mask {
+				@include icon-color($mask-color-primary) {
+					--var__border-color: #{$mask-color-accent};
+				}
+			}
+		}
+
+		&--card {
+			.mask {
+				@include icon-color($mask-color-card) {
+					--var__border-color: #{$mask-color-accent};
+				}
+			}
+		}
+
+		&--accent {
+			.mask {
+				@include icon-color($mask-color-accent) {
+					--var__border-color: #{$mask-color-primary};
+				}
+			}
+		}
+
+		&--contrast {
+			.mask {
+				@include icon-color($mask-color-contrast) {
+					--var__border-color: #{$mask-color-accent};
+				}
+			}
+		}
+
+		&--black {
+			.mask {
+				@include icon-color($ionite-color-black) {
+					--var__border-color: #{$mask-color-accent};
+				}
+			}
+		}
+
+		&--white {
+			.mask {
+				@include icon-color($ionite-color-white) {
+					--var__border-color: #{$mask-color-accent};
+				}
+			}
+		}
+	}
+}

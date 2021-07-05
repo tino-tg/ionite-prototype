@@ -1,0 +1,59 @@
+<div class="code-example">
+  <h3 class="mat-h3 code-example__title">
+    <span>{{ componentTitle }}</span>
+    <span class="spacer"></span>
+    <button
+      mat-stroked-button
+      color="accent"
+      (click)="expansionIsOpen = !expansionIsOpen"
+    >
+      <mat-icon class="me-1">code</mat-icon>
+      <span *ngIf="expansionIsOpen else viewCode">Hide</span>
+      <ng-template #viewCode>
+        <span>View</span>
+      </ng-template>
+      code
+    </button>
+  </h3>
+  <div class="code-example__body">
+    <mat-expansion-panel
+      *ngIf="componentTemplate && (componentTemplate.templateText || componentTemplate.controllerText || componentTemplate.styleText)"
+      [expanded]="expansionIsOpen"
+      hideToggle
+      class="align-self-stretch mat-elevation-z0 rounded-0 mt-1 mb-3"
+    >
+      <ng-template matExpansionPanelContent>
+        <mat-tab-group animationDuration="0ms" disableRipple color="accent">
+          <mat-tab *ngIf="componentTemplate.templateText">
+            <ng-template mat-tab-label>
+              <span class="text-large me-2 devicons devicons-html5"></span>
+              HTML
+            </ng-template>
+            <ng-template matTabContent>
+              <app-code-snippet [codeText]="componentTemplate.templateText"></app-code-snippet>
+            </ng-template>
+          </mat-tab>
+          <mat-tab *ngIf="componentTemplate.controllerText">
+            <ng-template mat-tab-label>
+              <span class="text-large me-2 devicons devicons-angular"></span>
+              TS
+            </ng-template>
+            <ng-template matTabContent>
+              <app-code-snippet [codeText]="componentTemplate.controllerText"></app-code-snippet>
+            </ng-template>
+          </mat-tab>
+          <mat-tab *ngIf="componentTemplate.styleText">
+            <ng-template mat-tab-label>
+              <span class="text-large me-2 devicons devicons-sass"></span>
+              SCSS
+            </ng-template>
+            <ng-template matTabContent>
+              <app-code-snippet [codeText]="componentTemplate.styleText"></app-code-snippet>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+      </ng-template>
+    </mat-expansion-panel>
+    <ng-content select="[componentContent]"></ng-content>
+  </div>
+</div>

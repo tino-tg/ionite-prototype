@@ -1,0 +1,53 @@
+// ------------------------- //
+// theming for svg elements  //
+// by setting fill attribute //
+// ------------------------- //
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+@mixin ionite-svg-fill-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+	$background: map-get($theme, background);
+	$foreground: map-get($theme, foreground);
+	$svg-fill-default: mat.get-color-from-palette($foreground, text);
+	$svg-fill-primary: mat.get-color-from-palette($primary);
+	$svg-fill-accent: mat.get-color-from-palette($accent);
+	$svg-fill-contrast: mat.get-color-from-palette($primary, default-contrast);
+	$svg-fill-card: mat.get-color-from-palette($background, card);
+	$svg-fill-divider: map-get($foreground, divider);
+
+	.svg-fill {
+		fill: $svg-fill-default;
+
+		// coloring
+		// --------
+		&--primary {
+			fill: $svg-fill-primary;
+		}
+
+		&--accent {
+			fill: $svg-fill-accent;
+		}
+
+		&--contrast {
+			fill: $svg-fill-contrast;
+		}
+
+		&--card {
+			fill: $svg-fill-card;
+		}
+
+		&--divider {
+			fill: $svg-fill-divider;
+		}
+
+		&--black {
+			fill: $ionite-color-black;
+		}
+
+		&--white {
+			fill: $ionite-color-white;
+		}
+	}
+}

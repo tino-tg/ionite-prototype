@@ -1,0 +1,27 @@
+@use '~@angular/material' as mat;
+@import "~src/styles/base/variables";
+
+@mixin ionite-notifications-theme($theme) {
+	$accent: map-get($theme, accent);
+	$warn: map-get($theme, warn);
+
+	.error-notification-overlay {
+		color: mat.get-color-from-palette($warn, default-contrast);
+		background-color: mat.get-color-from-palette($warn);
+	}
+
+	.info-notification-overlay {
+		color: mat.get-color-from-palette($accent, default-contrast);
+		background-color: mat.get-color-from-palette($accent);
+	}
+
+	.success-notification-overlay {
+		color: mat.get-color-from-palette($success-colors, default-contrast);
+		background-color: mat.get-color-from-palette($success-colors);
+	}
+
+	.warning-notification-overlay {
+		color: mat.get-color-from-palette($warning-colors, default-contrast);
+		background-color: mat.get-color-from-palette($warning-colors);
+	}
+}

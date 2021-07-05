@@ -1,0 +1,118 @@
+@use '~@angular/material' as mat;
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+@import "~src/styles/base/variables";
+
+@mixin ionite-toolbar-theme($theme) {
+	$primary: map-get($theme, primary);
+	$accent: map-get($theme, accent);
+
+	.toolbar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+		width: 100%;
+		height: $ionite-toolbar-height-default;
+		z-index: $ionite-toolbar-z-index;
+		display: flex;
+		box-sizing: border-box;
+		flex-direction: row;
+		align-items: center;
+		white-space: nowrap;
+		background: mat.get-color-from-palette($primary);
+		font-family: $ionite-font-family-outstanding;
+		font-size: $ionite-toolbar-font-size-default;
+
+		.toolbar-brand {
+			height: 100%;
+			width: $ionite-sidebar-width-default;
+			padding-left: $ionite-toolbar-horizontal-spacing-default;
+
+			a {
+				display: flex;
+				align-items: center;
+				height: 100%;
+			}
+		}
+
+		.sidebar-toggle {
+			transition: all $ionite-sidebar-animation-duration ease-in-out;
+			position: fixed;
+			bottom: 0;
+			left: 0;
+			font-size: 0;
+
+			&--open {
+				left: $ionite-sidebar-width-default - $ionite-sidebar-toggle-size;
+			}
+		}
+
+		ionite-app-toolbar {
+			position: relative;
+			height: 100%;
+			display: flex;
+			flex: 1 1 auto;
+			align-items: center;
+			justify-content: center;
+		}
+
+		&__item {
+			position: relative;
+			display: flex;
+			height: 100%;
+			align-items: center;
+			color: $ionite-color-white;
+		}
+
+		&__page-title,
+		&__countdown {
+			position: absolute;
+			top: 0;
+			left: 50%;
+			transform: translate(-50%,0);
+			padding: 0 $ionite-toolbar-horizontal-spacing-default;
+
+			&--mobile {
+				left: 0;
+				transform: translate(0, 0);
+			}
+		}
+
+		&__user {
+			position: absolute;
+			right: 0;
+			transition: all $ionite-sidebar-animation-duration ease-out;
+			padding: 0 $ionite-toolbar-horizontal-spacing-default 0 (2 * $ionite-toolbar-horizontal-spacing-default);
+			clip-path: polygon($ionite-toolbar-horizontal-spacing-default $ionite-toolbar-horizontal-spacing-default, 100% 0, 100% 100%, 0% 100%);
+			background: mat.get-color-from-palette($primary);
+
+			&__count {
+				display: inline-block;
+				margin-right: 2px;
+			}
+
+			&--mobile-escape {
+				transform: translateY(-($ionite-toolbar-height-mobile - 1));
+			}
+		}
+
+		&--mobile {
+			top: auto;
+			bottom: 0;
+			height: $ionite-toolbar-height-mobile;
+			padding: 0 0 0 $ionite-sidebar-toggle-size;
+			font-size: $ionite-toolbar-font-size-mobile;
+
+			.sidebar-toggle {
+				&--open {
+					left: 0;
+				}
+			}
+
+			ionite-app-toolbar {
+				justify-content: space-between;
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+<div class="chart-container">
+  <ngx-charts-bar-vertical
+    [results]="data"
+    [scheme]="colorScheme"
+    [customColors]="customColors"
+    [legend]="showLegend"
+    [legendTitle]="legendTitle"
+    [yAxis]="showYAxis"
+    [showYAxisLabel]="showYAxisLabel"
+    [yAxisLabel]="yAxisLabel"
+    (select)="select($event)"
+    (activate)="activate($event)"
+    (deactivate)="deactivate($event)"
+  >
+  </ngx-charts-bar-vertical>
+</div>
