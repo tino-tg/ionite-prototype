@@ -1,12 +1,13 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { BarChartModule } from '@swimlane/ngx-charts'
+import { BarChartModule, GaugeModule, LineChartModule } from '@swimlane/ngx-charts'
 
 import { SharedModule } from '@shared/shared.module'
 import { DashboardRoutingModule } from './dashboard-routing.module'
 import { DashboardPageComponent } from './pages/dashboard-page/dashboard-page.component'
-import { ChartsBarVerticalComponent } from './components/charts/charts-bar-vertical.component'
-
+import { ChartsBarVerticalComponent } from './components/charts/bar-vertical/charts-bar-vertical.component'
+import { ChartsGaugeComponent } from './components/charts/gauge/charts-gauge.component'
+import { ChartsLineChartComponent } from './components/charts/line-chart/charts-line-chart.component'
 
 @NgModule({
   declarations: [
@@ -15,6 +16,8 @@ import { ChartsBarVerticalComponent } from './components/charts/charts-bar-verti
 
     // components
     ChartsBarVerticalComponent,
+    ChartsGaugeComponent,
+    ChartsLineChartComponent,
   ],
   imports: [
     CommonModule,
@@ -25,6 +28,8 @@ import { ChartsBarVerticalComponent } from './components/charts/charts-bar-verti
 
     // chart modules
     BarChartModule,
+    GaugeModule,
+    LineChartModule,
   ],
 })
 export class DashboardModule { }

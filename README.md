@@ -1,6 +1,6 @@
 # I/O.nite Design Prototype
 
-Visit the prototype [here](https://tino-tg.github.io/ionite/)
+Visit the prototype [here](https://tino-tg.github.io/ionite-prototype/)
 
 ## Development server
 

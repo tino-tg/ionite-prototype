@@ -50,12 +50,12 @@
         font-size: 16px;
         display: flex;
         align-items: center;
-        //background: mat.get-color-from-palette($background, background);
+        background: mat.get-color-from-palette($background, background);
         overflow: hidden;
-        background-color: #FFF;
 
         &__image {
           width: $ionite-sidebar-width-collapsed;
+          background-color: #FAFAFA;
         }
 
         &__title {

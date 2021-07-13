@@ -6,17 +6,19 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
-
-import { CoreModule } from './core/core.module'
-import { AppRoutingModule } from './app-routing.module'
-import { AppComponent } from './app/app.component'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatTooltipModule } from '@angular/material/tooltip'
 import { MatMenuModule } from '@angular/material/menu'
+import { MatDialogModule } from '@angular/material/dialog'
+
+import { CoreModule } from './core/core.module'
+import { AppRoutingModule } from './app-routing.module'
+import { AppBadgeDialogComponent, AppComponent } from './app/app.component'
 
 @NgModule({
   declarations: [
     AppComponent,
+    AppBadgeDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +30,7 @@ import { MatMenuModule } from '@angular/material/menu'
 
     // core angular material resources
     MatButtonModule,
+    MatDialogModule,
     MatDividerModule,
     MatIconModule,
     MatMenuModule,

@@ -1,117 +1,50 @@
 <div class="container gx-0">
   <div class="row gx-0">
-    <div class="col-lg-6">
-      <app-card cardTitle="Vertical Bars Chart">
+    <div class="col-lg-4 px-3 py-5">
+      <app-card cardTitle="Relative Humidity (%)">
         <ng-container cardContent>
-          <app-charts-bar-vertical></app-charts-bar-vertical>
+          <app-charts-gauge [data]="humidity" [max]="100"></app-charts-gauge>
         </ng-container>
       </app-card>
     </div>
-    <div class="col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image
-             src="https://images.unsplash.com/photo-1578133630261-a79a92922335?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&q=80&w=400"
-             alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-      </mat-card>
+    <div class="col-lg-4 py-5">
+      <app-card cardTitle="Temperature (°C)">
+        <ng-container cardContent>
+          <app-charts-gauge [data]="temperature" [max]="60"></app-charts-gauge>
+        </ng-container>
+      </app-card>
     </div>
-    <div class="col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image
-             src="https://images.unsplash.com/photo-1578133630261-a79a92922335?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&q=80&w=400"
-             alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-footer>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-footer>
-      </mat-card>
+    <div class="col-lg-4 px-3 py-5">
+      <app-card cardTitle="CO2 (ppm)">
+        <ng-container cardContent>
+          <app-charts-gauge [data]="co2" [max]="1000"></app-charts-gauge>
+        </ng-container>
+      </app-card>
     </div>
-    <div class="col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image
-             src="https://images.unsplash.com/photo-1578133630261-a79a92922335?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&q=80&w=400"
-             alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-footer>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-footer>
-      </mat-card>
+  </div>
+  <div class="row gx-0">
+    <div class="col-lg-6 px-3 py-5">
+      <app-card cardTitle="Noise (AVG)">
+        <ng-container cardContent>
+          <app-charts-line-chart [data]="noise" [maxY]="100"></app-charts-line-chart>
+        </ng-container>
+      </app-card>
     </div>
-    <div class="col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image
-             src="https://images.unsplash.com/photo-1578133630261-a79a92922335?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&q=80&w=400"
-             alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-footer>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-footer>
-      </mat-card>
+    <div class="col-lg-6 px-3 py-5">
+      <app-card cardTitle="PM2,5 (µg/m³)">
+        <ng-container cardContent>
+          <app-charts-gauge [data]="pm2" [max]="80"></app-charts-gauge>
+        </ng-container>
+      </app-card>
     </div>
-    <div class="col-lg-6">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Shiba Inu</mat-card-title>
-          <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-image
-             src="https://images.unsplash.com/photo-1578133630261-a79a92922335?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=300&q=80&w=400"
-             alt="Photo of a Shiba Inu">
-        <mat-card-content>
-          <p>
-            The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
-            A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
-            bred for hunting.
-          </p>
-        </mat-card-content>
-        <mat-card-footer>
-          <button mat-button>LIKE</button>
-          <button mat-button>SHARE</button>
-        </mat-card-footer>
-      </mat-card>
+  </div>
+  <div class="row gx-0">
+    <div class="col-12 px-3 py-5">
+      <app-card cardTitle="Avg. Temperature (°C)">
+        <ng-container cardContent>
+          <app-charts-bar-vertical [data]="avgTemp" [maxY]="60"></app-charts-bar-vertical>
+        </ng-container>
+      </app-card>
     </div>
   </div>
 </div>

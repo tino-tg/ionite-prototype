@@ -35,6 +35,13 @@
           <mat-icon>{{ item.icon }}</mat-icon>
           {{ item.label }}
         </a>
+        <span class="spacer"></span>
+        <img
+          class="mw-100 clickable"
+          alt="badge"
+          src="assets/badge.png"
+          (click)="openDialog()"
+        />
       </div>
     </mat-sidenav>
     <mat-sidenav-content [ngClass]="{'sidenav-content': (isMobile$ | async) === false, 'sidenav-content--collapsed': sideNavCollapsed}">

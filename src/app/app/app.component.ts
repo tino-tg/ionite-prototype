@@ -1,4 +1,6 @@
 import { Component } from '@angular/core'
+import { MatDialog } from '@angular/material/dialog'
+import { Subscription } from 'rxjs'
 import { NavigationItem } from "./types/navigation"
 import {
   actionSettingsChangeTheme,
@@ -7,7 +9,6 @@ import {
   Theme,
 } from '../core/settings'
 import { UiFacadeService } from '../core/ui'
-import { Subscription } from 'rxjs'
 
 @Component({
   selector: 'app-root',
@@ -30,6 +31,7 @@ export class AppComponent {
   navigationCollapseSubscription: Subscription
 
   constructor(
+    public dialog: MatDialog,
     private settingsFacadeService: SettingsFacadeService,
     private uiFacadeService: UiFacadeService,
   ) {
@@ -81,4 +83,18 @@ export class AppComponent {
 
     this.settingsFacadeService.dispatch(actionSettingsToggleNavigationCollapse({ navigationCollapsed }))
   }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(AppBadgeDialogComponent)
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`)
+    })
+  }
 }
+
+@Component({
+  selector: 'app-badge-dialog',
+  templateUrl: './app-badge-dialog.html',
+})
+export class AppBadgeDialogComponent {}

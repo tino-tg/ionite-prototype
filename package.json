@@ -16,7 +16,7 @@
     "lint": "ng lint",
     "lint:fix": "ng lint --fix",
     "e2e": "ng e2e",
-    "deploy": "ng deploy --base-href=/ionite/",
+    "deploy": "ng deploy --base-href=/ionite-prototype/",
     "ci:preview": "yarn test:headless && yarn lint && yarn e2e",
     "ci": "yarn ci:preview && yarn deploy"
   },
